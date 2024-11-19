@@ -50,13 +50,13 @@ app.get('/membership-discount', (req, res) => {
 // Endpoint 3 : Calculate tax on the cart total
 // http://localhost:3000/calculate-tax?cartTotal=3600
 
-function getCartTotalValueWithTax(cartTotal) {
-  return cartTotal + (cartTotal * taxRate) / 100;
+function getTaxValueByCartTotal(cartTotal) {
+  return  (cartTotal * taxRate) / 100;
 }
 
 app.get('/calculate-tax', (req, res) => {
   const cartTotal = parseFloat(req.query.cartTotal);
-  const cartTotalValue = getCartTotalValueWithTax(cartTotal);
+  const cartTotalValue = getTaxValueByCartTotal(cartTotal);
   res.send(cartTotalValue.toString());
 });
 
